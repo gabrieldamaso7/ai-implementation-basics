@@ -14,3 +14,4 @@ This repo contains basic/foundational exercises for building AI-powered applicat
 
 ## Status
 Week 1 - Env setup complete
+Week 1 - Basic functions, dicts and validation
