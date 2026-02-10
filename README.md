@@ -22,3 +22,5 @@ This repo contains basic/foundational exercises for building AI-powered applicat
     - outcome is broken: confusing prompt, too much information on the prompt
     - deterministic? not really
     - Cost for 10k words: input = 0.002$, output = 0.0001$ (https://developers.openai.com/api/docs/pricing)
+
+- Task 6 - Structured LLM output with JSON parsing and validation

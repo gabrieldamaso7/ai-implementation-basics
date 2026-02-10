@@ -1,4 +1,4 @@
-from llm_client import ask_llm, summarize_text
+from llm_client import ask_llm, summarize_text, summarize_text_structured
 
 def main():
 
@@ -13,10 +13,13 @@ def main():
     text = "\n".join(lines)
 
     try:
-        summary = summarize_text(text)
+        result = summarize_text_structured(text)
         print("\n--- Summary ---")
-        print(summary)
-
+        print(f"\nSummary: {result['summary']}")
+        print(f"\nKey Points: ")
+        for p in result['key_points']:
+            print(f"- {p}")
+        print(f"Confidence: {result['confidence']}")
 
         #user_input = input("Ask the LLM something: ")
         #answer = ask_llm(user_input)
