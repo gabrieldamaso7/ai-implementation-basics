@@ -7,6 +7,33 @@ load_dotenv()
 
 client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
+def decide_action(user_input: str) -> dict:
+    
+    prompt = f"""
+        You must decide the correct action.
+
+        Return ONLY valid JSON in this format:
+        {{
+            "action": "summarize_text" | "explain_text" | "reject_request",
+            "reason": string (only required if action is "reject_request")
+        }}
+
+            User input:
+            {user_input}
+            """
+    
+    response = ask_llm(prompt)
+    try:
+        data = json.loads(response)
+        validate_decision(data)
+        return data
+    except json.JSONDecodeError:
+        raise ValueError("LLM response is not valid JSON.")
+
+def validate_decision(data: dict):
+    assert data["action"] in ["summarize_text", "explain_text", "reject_request"], "Action must be one of summarize_text, explain_text, or reject_request."
+    
+
 def summarize_text_structured(text: str) -> str:
     if not text or not text.strip():
         raise ValueError("Text cannot be empty or whitespace.")
