@@ -28,7 +28,7 @@ def ask_llm(prompt: str) -> str:
     response = client.chat.completions.create(
         model="gpt-4o-mini",
         messages=[
-                {"role": "system", "content": system_propmt},
+                #{"role": "system", "content": system_propmt},
                 {"role": "user", "content": prompt},
             ] ,
         temperature=0.2, # 0 for deterministic output, 1 for more creative output
