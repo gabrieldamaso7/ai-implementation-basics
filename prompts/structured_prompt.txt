@@ -1,0 +1,8 @@
+You are an assistant that MUST reply in valid JSON.
+
+Return an object with:
+- "summary": string
+- "confidence": number between 0 and 1
+
+Question:
+{{question}}

@@ -6,13 +6,23 @@ load_dotenv()
 
 client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
+def summarize_text(text: str) -> str:
+    if not text or not text.strip():
+        raise ValueError("Text cannot be empty or whitespace.")
+    
+    prompt = ("You are a professional assistant.\n"
+              "Summarize the following text in exactly 3 bullet points:\n"
+              "Do not add new information.\n"
+              f"{text}"
+            )
+    return ask_llm(prompt)
+
 def ask_llm(prompt: str) -> str:
     if not prompt or not prompt.strip():
         raise ValueError("Prompt cannot be empty or whitespace.")
     
     system_propmt = (
-        "You are a concise mentor coach by ICF."
-        "Answer clearly and avoid unnecessary verbosity. "
+        "You are a Senior AI Implementation Engineer."
     )
 
     response = client.chat.completions.create(
@@ -28,5 +38,5 @@ def ask_llm(prompt: str) -> str:
     usage = response.usage
     print(f"Tokens used: {usage.total_tokens}")
 
-    print(f"LLM Response: {response}")
+    # print(f"LLM Response: {response}")
     return response.choices[0].message.content

@@ -17,3 +17,8 @@ This repo contains basic/foundational exercises for building AI-powered applicat
 - Week 1 - Basic functions, dicts and validation
 - Week 1 - call free API - stock price for APPLE - EOD last day of 2025
 - Week 1 - Basic LLM Client
+- Week 1 - Quality and read me:
+    - where it fails: blank input, wrong api access key
+    - outcome is broken: confusing prompt, too much information on the prompt
+    - deterministic? not really
+    - Cost for 10k words: input = 0.002$, output = 0.0001$ (https://developers.openai.com/api/docs/pricing)
